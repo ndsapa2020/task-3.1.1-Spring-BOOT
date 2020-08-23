@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+<div align="center">
+    <h2> Current user info</h2>
+    <table th:border="1" th:align="center">
+        <thead>
+        <tr>
+            <th th:width="150">Name</th>
+            <th th:width="120" th:align="center">Values</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>Id:</td>
+            <td th:text="${user.id}" th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Login</td>
+            <td th:text="${user.login} "th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td th:text="${user.password}" th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td th:text="${user.age}" th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Roles</td>
+            <td th:align="center">
+                <ul th:each="role: ${user.roles}">
+                    <li th:switch="${role.role}" th:align="left">
+                        <p th:case="ROLE_ADMIN">Admin</p>
+                        <p th:case="ROLE_USER">User</p>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+    <div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

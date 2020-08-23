@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header_admin :: header"></header>
+<div th:align="center">
+    <h1>Admin main page</h1>
+    <table th:border="1" th:align="center">
+        <thead>
+        <tr>
+            <th th:width="80">User's id</th>
+            <th th:width="150">Login</th>
+            <th th:width="120">Password</th>
+            <th th:width="80">Year of born</th>
+            <th th:width="150">Roles</th>
+            <th th:width="150">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <ul th:each="user: ${listUsers}">
+            <tr cols>
+                <td th:text="${user.id} "th:align="center"></td>
+                <td th:text="${user.login}" th:align="center"></td>
+                <td th:text="${user.password}"th:align="center"></td>
+                <td th:text="${user.age}" th:align="center"></td>
+                <td th:align="center">
+                    <ul th:each="role: ${user.roles}">
+                        <li th:switch="${role.role}" th:align="left">
+                            <p th:case="ROLE_ADMIN">Admin</p>
+                            <p th:case="ROLE_USER">User</p>
+                        </li>
+                    </ul>
+                </td>
+                <td align="center">
+                    <a th:href="'/admin/edit?id=' + ${user.id}">Edit</a>
+                    &nbsp &nbsp
+                    <a th:href="'/admin/delete?id=' + ${user.id}">Delete</a>
+                </td>
+            </tr>
+        </ul>
+        </tbody>
+    </table>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

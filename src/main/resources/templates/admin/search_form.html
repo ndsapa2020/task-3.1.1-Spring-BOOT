@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://java.sun.com/jsf/composite">
+<head>
+    <meta charset="UTF-8">
+    <title>search form</title>
+</head>
+<body>
+<div th:align="center">
+    <h4>Find user by id form</h4>
+    <form action="#" th:action="@{/admin/searchResult}" th:object="${is}" method="POST">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>Id:</td>
+                <td><input type="text" id="id" name="id" th:value=${id}></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Search"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

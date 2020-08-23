@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>search user</title>
+</head>
+<body>
+<div align="center">
+    <h2> Current user info</h2>
+    <table th:border="1" th:align="center">
+        <thead>
+        <tr>
+            <th th:width="150">Name</th>
+            <th th:width="120" th:align="center">Values</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>Id:</td>
+            <td th:text="${user.id}" th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Login</td>
+            <td th:text="${user.login}" th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td th:text="${user.password}" th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td th:text="${user.age}" th:align="center"></td>
+        </tr>
+        <tr>
+            <td>Roles</td>
+            <td th:align="center">
+                <ul th:each="role: ${user.roles}">
+                    <li th:switch="${role.role}" th:align="left">
+                        <p th:case="ROLE_ADMIN">Admin</p>
+                        <p th:case="ROLE_USER">User</p>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h3><a href="/admin/start">Return</a></h3>
+</div>
+</body>
